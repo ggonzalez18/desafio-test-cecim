@@ -15,7 +15,7 @@
         </v-form>
       </v-card-text>
         <v-card-actions class="pb-5 mx-auto">
-          <v-btn @click.prevent="login" color="warning" class="mx-auto" large to="/platform">ingresar</v-btn>
+          <v-btn @click.prevent="loginForm" color="warning" class="mx-auto" large>ingresar</v-btn>
         </v-card-actions>
     </v-card>
   </div>
@@ -23,7 +23,7 @@
 
 <script>
 // import firebase from 'firebase'
-// import { mapActions } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'Home',
@@ -35,6 +35,18 @@ export default {
     }
   },
   methods: {
+    ...mapActions(['login']),
+    loginForm() {
+      //   const { username, password } = this
+      //   this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
+      //   this.$router.push('/agenda')
+      // })
+      const { user, password } = this
+      this.login( { user, password }).then(() => {
+        this.$router.push('/agenda')
+      }).catch(() => alert('asdasdasdsa'))
+    }
+  }
     // login() {
     //   let validPassword = "123456"
     //   let validUser = "cecim"
@@ -56,7 +68,6 @@ export default {
     //     alert('stopppppppp!')
     //   })
     // }
-  }
 }
 
 </script>

@@ -5,11 +5,12 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        // userdate: {
-        //     defaultUser: 'cecim',
-        //     defaultPasword: '123456',
-        //     defaultName: 'Maria Oyarzún'
-        // },
+        authenticated: false,
+        userdate: {
+            defaultUser: 'cecim',
+            defaultPassword: '123456',
+            defaultName: 'Maria Oyarzún'
+        },
         events: [],
         event: null,
         specialtyTypes: [
@@ -31,6 +32,9 @@ export default new Vuex.Store({
         ADD_EVENT(state, newEvent) {
             state.events.push(newEvent)
         },
+        AUTH_REQUEST(state) {
+            state.authenticated = true
+        }
     },
     actions: {
         // showUser({ commit }) {
@@ -41,7 +45,21 @@ export default new Vuex.Store({
         },
         addEvent({ commit }, event) {
             commit('ADD_EVENT', event)
+        },
+        login({ commit, state }, userAuth) {
+            if (userAuth.user == state.userdate.defaultUser && userAuth.password == state.userdate.defaultPassword) {
+                commit('AUTH_REQUEST')
+            } else {
+                throw 'Credenciales invalidas'
+            }
         }
     },
-    modules: {}
+    getters: {
+        isAuthenticated: state => {
+            return state.authenticated
+        }
+    },
+    modules: {
+
+    }
 })

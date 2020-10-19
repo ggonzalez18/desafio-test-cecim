@@ -1,6 +1,6 @@
 <template>
     <v-app>
-    <v-toolbar color="cyan" dark flat>
+    <!-- <v-toolbar color="cyan" dark flat>
       <v-toolbar-title class="justify-start d-flex"><h3 class="orange--text mr-1">+</h3><h3>MedicalCenter</h3></v-toolbar-title>
 
       <v-spacer></v-spacer>
@@ -11,7 +11,6 @@
       <template v-slot:extension>
         <v-tabs v-model="tab" align-with-title>
           <v-tabs-slider color="orange"></v-tabs-slider>
-<!-- <v-tab v-for="item in items" :key="item">{{ item }}</v-tab> -->
           <v-tab to="/agenda">Agenda</v-tab>
           <v-tab to="/platform">Paciente</v-tab>
           <v-tab to="/">Flujo Diario</v-tab>
@@ -20,11 +19,12 @@
           <v-tab to="/">Correo</v-tab>
         </v-tabs>
       </template>
-    </v-toolbar>
+    </v-toolbar> -->
 
-          <v-main>
-            <router-view></router-view>
-          </v-main>
+  <tabs-menu v-if="isAuthenticated"></tabs-menu>
+    <v-main>
+      <router-view></router-view>
+    </v-main>
 
     <!-- <v-tabs-items v-model="tab">
       <v-tab-item v-for="item in items" :key="item">
@@ -37,14 +37,21 @@
 </template>
 
 <script>
+import TabsMenu from '@/components/TabsMenu.vue'
 
 export default {
   name: 'App',
   components: {
+    TabsMenu
   },
 
   data: () => ({
     tab: null,
   }),
-};
+  computed: { 
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated
+    },
+  }
+}
 </script>
