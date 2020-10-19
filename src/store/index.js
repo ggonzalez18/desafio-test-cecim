@@ -12,13 +12,13 @@ export default new Vuex.Store({
         // },
         events: [],
         event: null,
-        typesEvents: [
-            { name: 'Meeting', color: 'blue' },
-            { name: 'Travel', color: 'indigo' },
-            { name: 'Event', color: 'deep-purple' },
-            { name: 'Birthday', color: 'green' },
-            { name: 'Conference', color: 'orange' },
-            { name: 'Party', color: 'cyan' },
+        specialtyTypes: [
+            { specialty: 'Medicina General', color: 'blue' },
+            { specialty: 'Cardiología', color: 'indigo' },
+            { specialty: 'Nutrición', color: 'deep-purple' },
+            { specialty: 'Pediatría', color: 'green' },
+            { specialty: 'Kinesiología', color: 'orange' },
+            { specialty: 'Dermatología', color: 'cyan' },
         ],
     },
     mutations: {

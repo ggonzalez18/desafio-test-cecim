@@ -1,57 +1,32 @@
 <template>
-  <div>
+  <div class="container">
     <v-row>
-      <v-col cols="4"></v-col>
-    </v-row>
+      <v-col cols="4">
+        <form-comp></form-comp>
+      </v-col>
 
-    <v-row class="fill-height">
+    <!-- <v-row class="fill-height"> -->
     <v-col cols="8">
       <v-sheet height="64">
         <v-toolbar flat>
           <v-btn outlined class="mr-4" color="grey darken-2" @click="setToday">
             Today
           </v-btn>
-          <v-btn
-            fab
-            text
-            small
-            color="grey darken-2"
-            @click="prev"
-          >
-            <v-icon small>
-              mdi-chevron-left
-            </v-icon>
+          <v-btn fab text small color="grey darken-2" @click="prev">
+            <v-icon small>mdi-chevron-left</v-icon>
           </v-btn>
-          <v-btn
-            fab
-            text
-            small
-            color="grey darken-2"
-            @click="next"
-          >
-            <v-icon small>
-              mdi-chevron-right
-            </v-icon>
+          <v-btn fab text small color="grey darken-2" @click="next">
+            <v-icon small>mdi-chevron-right</v-icon>
           </v-btn>
           <v-toolbar-title v-if="$refs.calendar">
             {{ $refs.calendar.title }}
           </v-toolbar-title>
           <v-spacer></v-spacer>
-          <v-menu
-            bottom
-            right
-          >
+          <v-menu bottom right>
             <template v-slot:activator="{ on, attrs }">
-              <v-btn
-                outlined
-                color="grey darken-2"
-                v-bind="attrs"
-                v-on="on"
-              >
+              <v-btn outlined color="grey darken-2" v-bind="attrs" v-on="on">
                 <span>{{ typeToLabel[type] }}</span>
-                <v-icon right>
-                  mdi-menu-down
-                </v-icon>
+                <v-icon right> mdi-menu-down</v-icon>
               </v-btn>
             </template>
             <v-list>
@@ -128,7 +103,7 @@
       </v-sheet>
       <!-- <modal-edit :event='currentEvent' @close-dialog='dialog = false' :dialog="dialog"></modal-edit> -->
     </v-col>
-  </v-row>
+  <!-- </v-row> -->
 
   <!-- <v-row justify="center">
       <v-dialog v-model="dialog" persistent max-width="600px">
@@ -146,16 +121,17 @@
         </v-card>
       </v-dialog>
     </v-row> -->
+    </v-row>
   </div>
 </template>
 
 <script>
 import {mapState} from 'vuex'
-// import FormComp from '@/components/FormComp.vue'
+import FormComp from '@/components/FormComp.vue'
 
   export default { 
       components: {
-          // FormComp
+          FormComp
       },
     data: () => ({
       dialog: false,
