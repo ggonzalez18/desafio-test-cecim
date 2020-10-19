@@ -9,13 +9,13 @@
     <v-col cols="8">
       <v-sheet height="64">
         <v-toolbar flat>
-          <v-btn outlined class="mr-4" color="grey darken-2" @click="setToday">
+          <v-btn outlined class="mr-4" color="cyan darken-1" @click="setToday">
             Today
           </v-btn>
-          <v-btn fab text small color="grey darken-2" @click="prev">
+          <v-btn fab text small color="orange" @click="prev">
             <v-icon small>mdi-chevron-left</v-icon>
           </v-btn>
-          <v-btn fab text small color="grey darken-2" @click="next">
+          <v-btn fab text small color="orange" @click="next">
             <v-icon small>mdi-chevron-right</v-icon>
           </v-btn>
           <v-toolbar-title v-if="$refs.calendar">
@@ -24,7 +24,7 @@
           <v-spacer></v-spacer>
           <v-menu bottom right>
             <template v-slot:activator="{ on, attrs }">
-              <v-btn outlined color="grey darken-2" v-bind="attrs" v-on="on">
+              <v-btn outlined color="cyan darken-1" v-bind="attrs" v-on="on">
                 <span>{{ typeToLabel[type] }}</span>
                 <v-icon right> mdi-menu-down</v-icon>
               </v-btn>
@@ -153,9 +153,6 @@ import FormComp from '@/components/FormComp.vue'
       selectedEvent: {},
       selectedElement: null,
       selectedOpen: false,
-    //   events: [],
-      colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
-      names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
     }),
     mounted () {
       this.$refs.calendar.checkChange()

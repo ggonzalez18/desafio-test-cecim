@@ -21,11 +21,16 @@ export default new Vuex.Store({
             { specialty: 'Kinesiología', color: 'orange' },
             { specialty: 'Dermatología', color: 'cyan' },
         ],
+        doctors: [
+            { nameDoctor: 'Adrianna Váldes', value: 1 },
+            { nameDoctor: 'Oscar Campos', value: 2 },
+            { nameDoctor: 'Alejandro Gutierrez', value: 3 },
+            { nameDoctor: 'Dominga valenzuela', value: 4 },
+            { nameDoctor: 'Ximena Casteblanco', value: 5 },
+            { nameDoctor: 'Rodrigo Villalobos', value: 6 },
+        ],
     },
     mutations: {
-        // SET_USER_DATE(state, userDefault) {
-        //     state.userdate = userDefault
-        // },
         SET_EVENT(state, newEvent) {
             state.event = newEvent
         },
@@ -37,9 +42,6 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        // showUser({ commit }) {
-        //     commit('SET_USER_DATE')
-        // },
         getEvents({ commit }, event) {
             commit('SET_EVENT', event)
         },

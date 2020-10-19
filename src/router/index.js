@@ -13,9 +13,6 @@ const routes = [{
     {
         path: '/platform',
         name: 'Platform',
-        // route level code-splitting
-        // this generates a separate chunk (Platform.[hash].js) for this route
-        // which is lazy-loaded when the route is visited.
         component: () =>
             import ( /* webpackChunkName: "Platform" */ '../views/Platform.vue'),
         meta: {

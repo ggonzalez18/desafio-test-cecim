@@ -22,7 +22,6 @@
 </template>
 
 <script>
-// import firebase from 'firebase'
 import { mapActions } from 'vuex'
 
 export default {
@@ -37,37 +36,12 @@ export default {
   methods: {
     ...mapActions(['login']),
     loginForm() {
-      //   const { username, password } = this
-      //   this.$store.dispatch(AUTH_REQUEST, { username, password }).then(() => {
-      //   this.$router.push('/agenda')
-      // })
       const { user, password } = this
       this.login( { user, password }).then(() => {
         this.$router.push('/agenda')
       }).catch(() => alert('asdasdasdsa'))
     }
   }
-    // login() {
-    //   let validPassword = "123456"
-    //   let validUser = "cecim"
-    //   if (password != validPassword && user != validUser){
-    //     return alert('usuario y contraseña invalidos')
-    //   } else {
-    //     this.$router.push('/platform')
-    //   }
-    // } 
-
-
-    // ...mapActions(['setUser']),
-    // login() {
-    //   firebase.auth().signInWithEmailAndPassword(this.email, this.password).then(() => {
-    //     this.setUser(this.email)
-    //     this.$router.push('/apod')
-    //   })
-    //   .catch(() => {
-    //     alert('stopppppppp!')
-    //   })
-    // }
 }
 
 </script>
