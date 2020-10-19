@@ -1,16 +1,16 @@
 <template>
   <div class="Platform">
-    <tabs-menu></tabs-menu>
+    <h1>soy plataforma</h1>
   </div>
 </template>
 
 <script>
-import TabsMenu from '@/components/TabsMenu.vue'
+// import TabsMenu from '@/components/TabsMenu.vue'
 
 export default {
   name: 'Home',
   components: {
-    TabsMenu
+    // TabsMenu
   }
 }
 </script>
