@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Agenda from '../views/Agenda.vue'
 import Process from '../views/Process.vue'
+import FlowBoard from '../views/FlowBoard.vue'
 
 Vue.use(VueRouter)
 
@@ -29,6 +30,11 @@ const routes = [{
         path: '/process',
         name: 'Process',
         component: Process
+    },
+    {
+        path: '/flowboard',
+        name: 'FlowBoard',
+        component: FlowBoard
     },
 ]
 
