@@ -7,6 +7,7 @@
           <v-text-field v-model="rut" label="Rut" prepend-icon="mdi-account" color="cyan darken-1"></v-text-field>
           <v-select v-model="typeEvent" :items="specialtyTypes" prepend-icon="mdi-heart-pulse" class="mt-4" dense hide-details item-text="specialty" item-value="color" label="Especialidad" color="cyan darken-1"></v-select>
           <v-select v-model="selectDoctors" :items="doctors" prepend-icon="mdi-clipboard-account" class="mt-8" dense hide-details item-text="nameDoctor" item-value="value" label="Doctor" color="cyan darken-1"></v-select>
+          <v-select v-model="selectmedicalBranch" :items="medicalBranch" prepend-icon="mdi-map-marker" class="mt-8" dense hide-details item-text="directionBranch" item-value="value" label="Sucursal" color="cyan darken-1"></v-select>
 
         <v-dialog ref="dialogDate" v-model="dateInit" :return-value.sync="pickerInit" persistent width="290px">
           <template v-slot:activator="{ on, attrs }">
@@ -31,6 +32,8 @@
             </v-time-picker>
           </v-dialog>
 
+          <v-text-field v-model="phone" label="Télefono" prepend-icon="mdi-phone" color="cyan darken-1"></v-text-field>
+
         <v-col cols="12" class="text-center">
           <v-btn color="orange" dark large @click="saveEvents">Agregar</v-btn>
         </v-col>
@@ -42,11 +45,13 @@
 <script>
 import { mapState, mapActions} from 'vuex'
 export default {
-  props: {
-    event: Object,
-  },
+  // props: {
+  //   event: Object,
+  // },
   data() {
     return {
+      selectmedicalBranch: '',
+      phone: '',
       rut: '',
       selectDoctors: '',
       pickerInit: '',
@@ -58,7 +63,7 @@ export default {
     }
   },
 computed: {
-  ...mapState(['specialtyTypes', 'doctors']),
+  ...mapState(['specialtyTypes', 'doctors', 'medicalBranch']),
 },
 methods: {
   ...mapActions(['getEvents', 'addEvent']),

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Agenda from '../views/Agenda.vue'
+import Process from '../views/Process.vue'
 
 Vue.use(VueRouter)
 
@@ -23,6 +24,11 @@ const routes = [{
         path: '/agenda',
         name: 'Agenda',
         component: Agenda
+    },
+    {
+        path: '/process',
+        name: 'Process',
+        component: Process
     },
 ]
 

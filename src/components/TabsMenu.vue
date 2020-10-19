@@ -12,7 +12,7 @@
           <v-tab to="/agenda">Agenda</v-tab>
           <v-tab to="/platform">Paciente</v-tab>
           <v-tab to="/">Flujo Diario</v-tab>
-          <v-tab to="/">Procedimientos</v-tab>
+          <v-tab to="/process">Procedimientos</v-tab>
           <v-tab to="/">Administración</v-tab>
           <v-tab to="/">Correo</v-tab>
         </v-tabs>

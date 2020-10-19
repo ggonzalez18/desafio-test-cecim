@@ -39,7 +39,8 @@ export default {
       const { user, password } = this
       this.login( { user, password }).then(() => {
         this.$router.push('/agenda')
-      }).catch(() => alert('asdasdasdsa'))
+      })
+      .catch(() => alert('asdasdasdsa'))
     }
   }
 }
