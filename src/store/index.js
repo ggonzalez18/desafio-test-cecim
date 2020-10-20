@@ -77,41 +77,46 @@ export default new Vuex.Store({
                 img: 'https://hospitaldeninos.cl/wp-content/uploads/2019/07/pabellon-hospital-de-ninos-3.jpg',
                 description: 'Requisitos, sucursales disponibles, horarios...'
             },
-        ],
-        mutations: {
-            SET_EVENT(state, newEvent) {
-                state.event = newEvent
-            },
-            ADD_EVENT(state, newEvent) {
-                state.events.push(newEvent)
-            },
-            AUTH_REQUEST(state, userAuth) {
-                if (userAuth.user == state.userdate.defaultUser && userAuth.password == state.userdate.defaultPassword) {
-                    state.authenticated = true
-                } else {
-                    state.authenticated = false
-                }
-
+        ]
+    },
+    mutations: {
+        SET_EVENT(state, newEvent) {
+            state.event = newEvent
+        },
+        ADD_EVENT(state, newEvent) {
+            state.events.push(newEvent)
+        },
+        AUTH_LOGIN(state, userAuth) {
+            if (userAuth.user == state.userdate.defaultUser && userAuth.password == state.userdate.defaultPassword) {
+                state.authenticated = true
+            } else {
+                state.authenticated = false
             }
         },
-        actions: {
-            getEvents({ commit }, event) {
-                commit('SET_EVENT', event)
-            },
-            addEvent({ commit }, event) {
-                commit('ADD_EVENT', event)
-            },
-            login({ commit }, userAuth) {
-                commit('AUTH_REQUEST', userAuth)
-            }
+        AUTH_LOGOUT(state) {
+            state.authenticated = false
+        }
+    },
+    actions: {
+        getEvents({ commit }, event) {
+            commit('SET_EVENT', event)
         },
-        getters: {
-            isAuthenticated: state => {
-                return state.authenticated
-            }
+        addEvent({ commit }, event) {
+            commit('ADD_EVENT', event)
         },
-        modules: {
+        login({ commit }, userAuth) {
+            commit('AUTH_LOGIN', userAuth)
+        },
+        logout({ commit }) {
+            commit('AUTH_LOGOUT')
+            console.log("Se ha deslogueado satisfactoriamente.")
 
         }
-    }
+    },
+    getters: {
+        isAuthenticated: state => {
+            return state.authenticated
+        }
+    },
+    modules: {}
 })

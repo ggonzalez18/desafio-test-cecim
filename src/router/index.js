@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import store from '@/store'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Agenda from '../views/Agenda.vue'
@@ -24,17 +25,26 @@ const routes = [{
     {
         path: '/agenda',
         name: 'Agenda',
-        component: Agenda
+        component: Agenda,
+        meta: {
+            login: true
+        }
     },
     {
         path: '/process',
         name: 'Process',
-        component: Process
+        component: Process,
+        meta: {
+            login: true
+        }
     },
     {
         path: '/flowboard',
         name: 'FlowBoard',
-        component: FlowBoard
+        component: FlowBoard,
+        meta: {
+            login: true
+        }
     },
 ]
 
@@ -45,9 +55,11 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    // if (to.name !== 'Login' && !this.$store.getters.isAuthenticated) next({ name: 'Login' })
-    // else next()
-    next()
+    if (to.matched.some(record => record.meta.login) && !store.getters['isAuthenticated']) {
+        next('/')
+    } else {
+        next()
+    }
 })
 
 export default router

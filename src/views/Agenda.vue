@@ -153,6 +153,8 @@ import FormComp from '@/components/FormComp.vue'
       selectedEvent: {},
       selectedElement: null,
       selectedOpen: false,
+      colors: ['blue', 'indigo', 'deep-purple', 'cyan', 'green', 'orange', 'grey darken-1'],
+      names: ['Meeting', 'Holiday', 'PTO', 'Travel', 'Event', 'Birthday', 'Conference', 'Party'],
     }),
     mounted () {
       this.$refs.calendar.checkChange()
@@ -203,8 +205,6 @@ import FormComp from '@/components/FormComp.vue'
           this.selectedOpen = false
           setTimeout(open, 10)
         } else {
-            // this.currentEvent = this.selectedEvent
-            // console.log(this.selectedEvent)
           open()
         }
 

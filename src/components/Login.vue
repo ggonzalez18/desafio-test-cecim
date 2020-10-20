@@ -21,6 +21,7 @@
   </div>
 </template>
 
+
 <script>
 import { mapActions } from 'vuex'
 
@@ -40,7 +41,6 @@ export default {
       this.login( { user, password }).then(() => {
         this.$router.push('/agenda')
       })
-      .catch(() => alert('asdasdasdsa'))
     }
   }
 }

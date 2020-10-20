@@ -5,7 +5,7 @@
       <v-spacer></v-spacer>
         <h3 v-text="userdate.defaultName"></h3>
       <v-btn icon><v-icon>mdi-magnify</v-icon></v-btn>
-      <v-btn icon><v-icon>mdi-logout</v-icon></v-btn>
+      <v-btn  @click="logoutUser" icon><v-icon>mdi-logout</v-icon></v-btn>
       <template v-slot:extension>
         <v-tabs v-model="tab" align-with-title>
           <v-tabs-slider color="orange"></v-tabs-slider>
@@ -34,7 +34,11 @@ import {mapActions, mapState} from 'vuex'
     ...mapState(['userdate'])
     },
     methods: {
-      ...mapActions(['showUser'])
+      ...mapActions(['showUser', 'logout']),
+      logoutUser() {
+        this.$router.push('/')
+        this.logout()
+      }
     }
   }
 </script>
