@@ -4,8 +4,6 @@
       <v-col cols="4">
         <form-comp></form-comp>
       </v-col>
-
-    <!-- <v-row class="fill-height"> -->
     <v-col cols="8">
       <v-sheet height="64">
         <v-toolbar flat>
@@ -51,7 +49,7 @@
           ref="calendar"
           v-model="focus"
           color="primary"
-          :events="events"
+          :events="patients"
           :event-color="getEventColor"
           :type="type"
           @click:event="showEvent"
@@ -90,37 +88,12 @@
               <span v-html="selectedEvent.details"></span>
             </v-card-text>
             <v-card-actions>
-              <v-btn
-                text
-                color="secondary"
-                @click="selectedOpen = false"
-              >
-                Cancel
-              </v-btn>
+              <v-btn text color="secondary" @click="selectedOpen = false">Cancel</v-btn>
             </v-card-actions>
           </v-card>
         </v-menu>
       </v-sheet>
-      <!-- <modal-edit :event='currentEvent' @close-dialog='dialog = false' :dialog="dialog"></modal-edit> -->
     </v-col>
-  <!-- </v-row> -->
-
-  <!-- <v-row justify="center">
-      <v-dialog v-model="dialog" persistent max-width="600px">
-        <v-card>
-          <v-card-text>
-            <v-container>
-                  <form-comp :event='currentEvent'></form-comp>
-            </v-container>
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer></v-spacer>
-            <v-btn color="blue darken-1" text @click="dialog = false">Cerrar</v-btn>
-            <v-btn color="blue darken-1" text >Guardar edición</v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-dialog>
-    </v-row> -->
     </v-row>
   </div>
 </template>
@@ -160,17 +133,9 @@ import FormComp from '@/components/FormComp.vue'
       this.$refs.calendar.checkChange()
     },
     computed: {
-        ...mapState (['events'])
+        ...mapState (['patients'])
     },
     methods: {
-      //  editEvent(){
-      //   this.dialog =true 
-      //   this.currentEvent.name = event.name,
-      //   this.currentEvent.start = event.start,
-      //   this.currentEvent.end = event.end,
-      //   this.currentEvent.color = event.color,
-      //   this.currentEvent.timed = event.timeEnd
-      // },
       displayModal() {
         this.dialog = true  
       },
@@ -210,30 +175,31 @@ import FormComp from '@/components/FormComp.vue'
 
         nativeEvent.stopPropagation()
       },
-      updateRange ({ start, end }) {
-        const events = []
+      updateRange () {
+      // updateRange ({ start, end }) {
+        // const events = []
 
-        const min = new Date(`${start.date}T00:00:00`)
-        const max = new Date(`${end.date}T23:59:59`)
-        const days = (max.getTime() - min.getTime()) / 86400000
-        const eventCount = this.rnd(days, days + 20)
+        // const min = new Date(`${start.date}T00:00:00`)
+        // const max = new Date(`${end.date}T23:59:59`)
+        // const days = (max.getTime() - min.getTime()) / 86400000
+        // const eventCount = this.rnd(days, days + 20)
 
-        for (let i = 0; i < eventCount; i++) {
-          const allDay = this.rnd(0, 3) === 0
-          const firstTimestamp = this.rnd(min.getTime(), max.getTime())
-          const first = new Date(firstTimestamp - (firstTimestamp % 900000))
-          const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000
-          const second = new Date(first.getTime() + secondTimestamp)
+        // for (let i = 0; i < eventCount; i++) {
+        //   const allDay = this.rnd(0, 3) === 0
+        //   const firstTimestamp = this.rnd(min.getTime(), max.getTime())
+        //   const first = new Date(firstTimestamp - (firstTimestamp % 900000))
+        //   const secondTimestamp = this.rnd(2, allDay ? 288 : 8) * 900000
+        //   const second = new Date(first.getTime() + secondTimestamp)
 
-          events.push({
-            name: this.names[this.rnd(0, this.names.length - 1)],
-            start: first,
-            end: second,
-            color: this.colors[this.rnd(0, this.colors.length - 1)],
-            timed: !allDay,
-          })
-        }
-        // this.events = events
+        //   events.push({
+        //     name: this.names[this.rnd(0, this.names.length - 1)],
+        //     start: first,
+        //     end: second,
+        //     color: this.colors[this.rnd(0, this.colors.length - 1)],
+        //     timed: !allDay,
+        //   })
+        // }
+        // this.events = this.patients
       },
       rnd (a, b) {
         return Math.floor((b - a + 1) * Math.random()) + a

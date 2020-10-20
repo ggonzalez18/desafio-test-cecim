@@ -11,24 +11,17 @@ export default new Vuex.Store({
             defaultPassword: '123456',
             defaultName: 'Maria Oyarzún'
         },
-        events: [],
-        event: null,
-        specialtyTypes: [
-            { specialty: 'Medicina General', color: 'blue' },
-            { specialty: 'Cardiología', color: 'indigo' },
-            { specialty: 'Nutrición', color: 'deep-purple' },
-            { specialty: 'Pediatría', color: 'green' },
-            { specialty: 'Kinesiología', color: 'orange' },
-            { specialty: 'Dermatología', color: 'cyan' },
+        patients: [],
+        patient: null,
+        attentionDetail: [
+            { specialty: 'Medicina General', color: 'blue', nameDoctor: 'Adrianna Váldes', value: 1 },
+            { specialty: 'Cardiología', color: 'indigo', nameDoctor: 'Oscar Campos', value: 2 },
+            { specialty: 'Nutrición', color: 'deep-purple', nameDoctor: 'Alejandro Gutierrez', value: 3 },
+            { specialty: 'Pediatría', color: 'green', nameDoctor: 'Dominga valenzuela', value: 4 },
+            { specialty: 'Kinesiología', color: 'orange', nameDoctor: 'Ximena Casteblanco', value: 5 },
+            { specialty: 'Dermatología', color: 'cyan', nameDoctor: 'Rodrigo Villalobos', value: 6 },
         ],
-        doctors: [
-            { nameDoctor: 'Adrianna Váldes', value: 1 },
-            { nameDoctor: 'Oscar Campos', value: 2 },
-            { nameDoctor: 'Alejandro Gutierrez', value: 3 },
-            { nameDoctor: 'Dominga valenzuela', value: 4 },
-            { nameDoctor: 'Ximena Casteblanco', value: 5 },
-            { nameDoctor: 'Rodrigo Villalobos', value: 6 },
-        ],
+
         medicalBranch: [
             { directionBranch: 'Alameda', value: 1 },
             { directionBranch: 'Puente Alto', value: 2 },
@@ -80,11 +73,11 @@ export default new Vuex.Store({
         ]
     },
     mutations: {
-        SET_EVENT(state, newEvent) {
-            state.event = newEvent
+        SET_PATIENT(state, newPatient) {
+            state.patient = newPatient
         },
-        ADD_EVENT(state, newEvent) {
-            state.events.push(newEvent)
+        ADD_PATIENT(state, newPatient) {
+            state.patients.push(newPatient)
         },
         AUTH_LOGIN(state, userAuth) {
             if (userAuth.user == state.userdate.defaultUser && userAuth.password == state.userdate.defaultPassword) {
@@ -98,11 +91,11 @@ export default new Vuex.Store({
         }
     },
     actions: {
-        getEvents({ commit }, event) {
-            commit('SET_EVENT', event)
+        getPatients({ commit }, patient) {
+            commit('SET_PATIENT', patient)
         },
-        addEvent({ commit }, event) {
-            commit('ADD_EVENT', event)
+        addPatient({ commit }, patient) {
+            commit('ADD_PATIENT', patient)
         },
         login({ commit }, userAuth) {
             commit('AUTH_LOGIN', userAuth)

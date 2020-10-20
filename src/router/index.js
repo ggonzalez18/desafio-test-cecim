@@ -5,6 +5,7 @@ import Home from '../views/Home.vue'
 import Agenda from '../views/Agenda.vue'
 import Process from '../views/Process.vue'
 import FlowBoard from '../views/FlowBoard.vue'
+import NotFound from '../views/NotFound.vue'
 
 Vue.use(VueRouter)
 
@@ -12,15 +13,6 @@ const routes = [{
         path: '/',
         name: 'Home',
         component: Home
-    },
-    {
-        path: '/platform',
-        name: 'Platform',
-        component: () =>
-            import ( /* webpackChunkName: "Platform" */ '../views/Platform.vue'),
-        meta: {
-            login: true
-        }
     },
     {
         path: '/agenda',
@@ -45,6 +37,11 @@ const routes = [{
         meta: {
             login: true
         }
+    },
+    {
+        path: '/*',
+        name: 'NotFound',
+        component: NotFound,
     },
 ]
 

@@ -10,11 +10,11 @@
         <v-tabs v-model="tab" align-with-title>
           <v-tabs-slider color="orange"></v-tabs-slider>
           <v-tab to="/agenda">Agenda</v-tab>
-          <v-tab to="/platform">Paciente</v-tab>
+          <v-tab to="/*">Paciente</v-tab>
           <v-tab to="/flowboard">Flujo Diario</v-tab>
           <v-tab to="/process">Procedimientos</v-tab>
-          <v-tab to="/">Administración</v-tab>
-          <v-tab to="/">Correo</v-tab>
+          <v-tab to="/*">Administración</v-tab>
+          <v-tab to="/*">Correo</v-tab>
         </v-tabs>
       </template>
     </v-toolbar>
